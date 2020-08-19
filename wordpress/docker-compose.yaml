@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./wp-db:/var/lib/mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    container_name: database
+
+  wp:
+    depends_on:
+      - db
+    image: wordpress:latest
+    expose:
+      - 80
+    restart: unless-stopped
+    volumes:
+      - ./wp-app:/var/www/html
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+    container_name: wordpress
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
