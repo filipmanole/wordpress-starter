@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <h1 align="center">Two Wheels Self Balancing Robot</h1>
+  <h1 align="center">Wordpress Starter</h1>
 </p>
 
 ## About The Project
