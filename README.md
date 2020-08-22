@@ -5,7 +5,7 @@
 
 ## About The Project
 
-This repository contains the files needed to start one or multiple wordpress websites on a server.
+This repository contains a simple and clean project with the files needed to start one or multiple wordpress websites on a server.
 
 ## Docker images used
 
@@ -18,7 +18,7 @@ This repository contains the files needed to start one or multiple wordpress web
 
 ## Prerequisites
 
-Make sure you have docker and docker-compose installed.
+Make sure you have docker and docker-compose installed. If not, follow [this page](https://docs.docker.com/get-docker/)
 
 Clone this repository:
 ```sh
@@ -36,7 +36,7 @@ In the nginx directory, prepare the .env file. You can start from the existing .
 ```sh
 cd nginx
 cp .env.sample .env
-vim .env #edit the file
+vim .env # edit the file: set you email
 ```
 
 After the you set the variables in .env file, start the reverse-proxy:
@@ -50,7 +50,7 @@ In the wordpress directory, prepare the .env file. You can start from the existi
 ```sh
 cd wordpress
 cp .env.sample .env
-vim .env #edit the file
+vim .env # edit the file: set your database, user, passwords and domain.
 ```
 
 After the you set the variables in .env file, start the wordpress website:
